@@ -1,11 +1,5 @@
 homepage: https://www.alphalyr.com
 documentation: https://faq.alphalyr.com/knowledge/marketing-studio
 versions:
-  - sha: f5f81b778627bfaa8e0411f1a480d9abba763eab
-    changeNotes: Update license file name.
-  - sha: afe42bfbdf8c384821a4b9fd5adb9eabd0f2e985
-    changeNotes: Update last metadata and Readme.
-  - sha: 95f5ce6bb586246163bf3484f174553c19c555e1
-    changeNotes: Main functional update on the tag and some updates on variable description.
-  - sha: e2014d841edc977cdcb0620dd4c351be91e4f05a
+  - sha: a738092e6ca2c573a38a2320ef9c2e12c7d2e10c
     changeNotes: Initial release.
