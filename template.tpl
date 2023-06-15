@@ -221,16 +221,17 @@ if (getData('event_name')) {
 let pathConstructor = track;
 
 // -------- GENERIC DATA --------
+let deviceType = getData('client_hints.mobile') ? 'm' : 'd';
 let page = pageMap[getData('event_name')] || 'home';
 let aid = getData('customerId') || '';
 let cid = getData('userEmail') || '';
-
 let genericConstructor = '?page=' + page + '&aid=' + aid + '&cid=' + cid;
 
 genericConstructor += '&uuid=' + getData('uuid');
 genericConstructor += '&referrer=' + encodeUriComponent(getData('page_referrer'));
 genericConstructor += '&ip_address=' + getData('ip_override');
 genericConstructor += '&user_agent=' + encodeUriComponent(getData('user_agent'));
+genericConstructor += '&deviceType=' + deviceType;
 
 let pageLocation = getData('page_location') || '';
 const parsedUrl = parseUrl(pageLocation);
@@ -239,7 +240,9 @@ if (parsedUrl && parsedUrl.searchParams) {
   for (let param in parsedUrl.searchParams) {
     genericConstructor += '&' + param + '=' + encodeUriComponent(parsedUrl.searchParams[param]);
   }
+  genericConstructor += '&path=' + parsedUrl.pathname;
 }
+
 
 let consentConstructor = '?aid=' + aid;
 
