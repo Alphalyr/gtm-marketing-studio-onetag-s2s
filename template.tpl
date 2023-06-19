@@ -66,20 +66,6 @@ ___TEMPLATE_PARAMETERS___
       },
       {
         "type": "TEXT",
-        "name": "uuid",
-        "displayName": "UUID",
-        "simpleValueType": true,
-        "help": "Valeur UUID du cookie de l\u0027internaute",
-        "enablingConditions": [
-          {
-            "paramName": "mode",
-            "paramValue": "s2s",
-            "type": "EQUALS"
-          }
-        ]
-      },
-      {
-        "type": "TEXT",
         "name": "confirmationCustomerType",
         "displayName": "Customer Type",
         "simpleValueType": true,
@@ -225,9 +211,10 @@ let deviceType = getData('client_hints.mobile') ? 'm' : 'd';
 let page = pageMap[getData('event_name')] || 'home';
 let aid = getData('customerId') || '';
 let cid = getData('userEmail') || '';
+let customData = getData('customData') || '';
 let genericConstructor = '?page=' + page + '&aid=' + aid + '&cid=' + cid;
 
-genericConstructor += '&uuid=' + getData('uuid');
+genericConstructor += '&uuid=' + getData('uid');
 genericConstructor += '&referrer=' + encodeUriComponent(getData('page_referrer'));
 genericConstructor += '&ip_address=' + getData('ip_override');
 genericConstructor += '&user_agent=' + encodeUriComponent(getData('user_agent'));
@@ -283,7 +270,7 @@ let clientType = getData('confirmationCustomerType') || '';
 let discountCode = getData('coupon') || '';
 let discountAmount = getData('confirmationDiscountAmount') || '';
 
-let transactionPageConstructor = '&products=' + products + '&totalPrice=' + transactionTotalPrice + '&totalPriceWithTax=' + totalPriceWithTax + '&shippingPrice=' + shippingPrice + '&reference=' + referenceTransaction + '&new=' + clientType + '&currency=' + currency + '&discountCode=' + discountCode + '&discountAmount=' + discountAmount;
+let transactionPageConstructor = '&products=' + products + '&totalPrice=' + transactionTotalPrice + '&totalPriceWithTax=' + totalPriceWithTax + '&shippingPrice=' + shippingPrice + '&reference=' + referenceTransaction + '&new=' + clientType + '&currency=' + currency + '&discountCode=' + discountCode + '&discountAmount=' + discountAmount + '&customData=' + customData;
 
 
 // -------- GDPR Consent Constructor DATA --------
