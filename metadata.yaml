@@ -1,6 +1,8 @@
 homepage: https://www.alphalyr.com
 documentation: https://faq.alphalyr.com/knowledge/marketing-studio
 versions:
+  - sha: c8994a53115afe2084cf8f716e1095bcc294174d
+    changeNotes: Add custom data field
   - sha: 3fb54b2d6a6231d9381632d03be512f6e3cecac6
     changeNotes: Fix uid and add custom data
   - sha: d736fe028bf456669991bcb692d8c1fdfd2980bf
