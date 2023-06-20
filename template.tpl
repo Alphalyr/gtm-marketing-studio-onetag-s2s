@@ -71,6 +71,13 @@ ___TEMPLATE_PARAMETERS___
         "simpleValueType": true,
         "enablingConditions": [],
         "help": "Match to \"new\" in technical documentation.\nTakes the value \"0\" when it is an old client and \"1\" when it is a new client."
+      },
+      {
+        "type": "TEXT",
+        "name": "customData",
+        "displayName": "Custom Data",
+        "simpleValueType": true,
+        "help": "Additional data that can be added for custom data processing."
       }
     ]
   },
