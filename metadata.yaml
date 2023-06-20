@@ -1,6 +1,8 @@
 homepage: https://www.alphalyr.com
 documentation: https://faq.alphalyr.com/knowledge/marketing-studio
 versions:
+  - sha: 3fb54b2d6a6231d9381632d03be512f6e3cecac6
+    changeNotes: Fix uid and add custom data
   - sha: d736fe028bf456669991bcb692d8c1fdfd2980bf
     changeNotes: Add device type and page path detection
   - sha: a738092e6ca2c573a38a2320ef9c2e12c7d2e10c
