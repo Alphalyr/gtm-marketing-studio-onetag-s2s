@@ -92,7 +92,7 @@ ___TEMPLATE_PARAMETERS___
         "name": "gdprConsent",
         "displayName": "GDPR Consent",
         "simpleValueType": true,
-        "help": "consentPerformance"
+        "help": "Takes the value 1 if the user has consented to the use of his data for analytics purposes. Marketing Studio will store data accordingly in order to comply with GDPR policies."
       },
       {
         "type": "TEXT",
@@ -119,7 +119,7 @@ const encodeUriComponent = require('encodeUriComponent');
 const sendHttpRequest = require('sendHttpRequest');
 const getAllEventData = require('getAllEventData');
 const parseUrl = require('parseUrl');
-
+const sha256Sync = require('sha256Sync');
 
 const onSuccess = () => {
   data.gtmOnSuccess();
@@ -221,7 +221,7 @@ let cid = getData('userEmail') || '';
 let customData = getData('customData') || '';
 let genericConstructor = '?page=' + page + '&aid=' + aid + '&cid=' + cid;
 
-genericConstructor += '&uuid=' + getData('uid');
+genericConstructor += '&uuid=' + encodeUriComponent(sha256Sync(getData('client_id')));
 genericConstructor += '&referrer=' + encodeUriComponent(getData('page_referrer'));
 genericConstructor += '&ip_address=' + getData('ip_override');
 genericConstructor += '&user_agent=' + encodeUriComponent(getData('user_agent'));
