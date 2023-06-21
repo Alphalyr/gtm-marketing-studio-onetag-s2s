@@ -1,6 +1,8 @@
 homepage: https://www.alphalyr.com
 documentation: https://faq.alphalyr.com/knowledge/marketing-studio
 versions:
+  - sha: de8c933860ba8169ab9215161aa8679f97ee7ae2
+    changeNotes: Add sha256(client_id) and update gdpr_consent field description
   - sha: c8994a53115afe2084cf8f716e1095bcc294174d
     changeNotes: Add custom data field
   - sha: 3fb54b2d6a6231d9381632d03be512f6e3cecac6
