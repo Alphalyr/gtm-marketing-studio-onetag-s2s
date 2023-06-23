@@ -1,12 +1,4 @@
-﻿___TERMS_OF_SERVICE___
-
-By creating or modifying this file you agree to Google Tag Manager's Community
-Template Gallery Developer Terms of Service available at
-https://developers.google.com/tag-manager/gallery-tos (or such other URL as
-Google may provide), as modified from time to time.
-
-
-___INFO___
+﻿___INFO___
 
 {
   "type": "TAG",
@@ -78,6 +70,13 @@ ___TEMPLATE_PARAMETERS___
         "displayName": "Custom Data",
         "simpleValueType": true,
         "help": "Additional data that can be added for custom data processing."
+      },
+      {
+        "type": "CHECKBOX",
+        "name": "isSPA",
+        "checkboxText": "Is SPA",
+        "simpleValueType": true,
+        "help": "Whether your website is a Single Page App."
       }
     ]
   },
@@ -219,6 +218,7 @@ let page = pageMap[getData('event_name')] || 'home';
 let aid = getData('customerId') || '';
 let cid = getData('userEmail') || '';
 let customData = getData('customData') || '';
+let gaSessionId = getData('ga_session_id') || '';
 let genericConstructor = '?page=' + page + '&aid=' + aid + '&cid=' + cid;
 
 genericConstructor += '&uuid=' + encodeUriComponent(sha256Sync(getData('client_id')));
@@ -226,6 +226,10 @@ genericConstructor += '&referrer=' + encodeUriComponent(getData('page_referrer')
 genericConstructor += '&ip_address=' + getData('ip_override');
 genericConstructor += '&user_agent=' + encodeUriComponent(getData('user_agent'));
 genericConstructor += '&deviceType=' + deviceType;
+
+if (getData('isSPA')) {
+  genericConstructor += '&gaSessionId=' + gaSessionId;
+}
 
 let pageLocation = getData('page_location') || '';
 const parsedUrl = parseUrl(pageLocation);
