@@ -179,12 +179,15 @@ function getData(key) {
     return d[key];
   }
   
+  let tax = d.tax || 0;
+  let shipping = d.shipping || 0;
+
   if (key == 'confirmationTotalPricewithout') {
-    return (d.value - d.tax - d.shipping);
+    return (d.value - tax - shipping);
   }
   
   if (key == 'confirmationTotalPricewith') {
-    return (d.value - d.shipping);
+    return (d.value - shipping);
   }
   
   if (key == 'confirmationDiscountAmount' && typeof(d.items) != 'undefined') {
