@@ -1,6 +1,8 @@
 homepage: https://www.alphalyr.com
 documentation: https://faq.alphalyr.com/knowledge/marketing-studio
 versions:
+  - sha: 8396ee0f2eff43e92f678e2077a20df2589ee4e4
+    changeNotes: Handle SPA and fix endpoint on purchase events
   - sha: de8c933860ba8169ab9215161aa8679f97ee7ae2
     changeNotes: Add sha256(client_id) and update gdpr_consent field description
   - sha: c8994a53115afe2084cf8f716e1095bcc294174d
