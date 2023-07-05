@@ -230,10 +230,14 @@ let cid = getData('userEmail') || '';
 let customData = getData('customData') || '';
 let gaSessionId = getData('ga_session_id') || '';
 let genericConstructor = '?page=' + page + '&aid=' + aid + '&cid=' + cid;
+let ipOverride = getData('ip_override');
+let bytes = ipOverride.split('.');
+bytes[3] = '0';
+ipOverride = bytes.join('.');
 
 genericConstructor += '&uuid=' + encodeUriComponent(sha256Sync(getData('client_id')));
 genericConstructor += '&referrer=' + encodeUriComponent(getData('page_referrer'));
-genericConstructor += '&ip_address=' + getData('ip_override');
+genericConstructor += '&ip_address=' + ipOverride;
 genericConstructor += '&user_agent=' + encodeUriComponent(getData('user_agent'));
 genericConstructor += '&deviceType=' + deviceType;
 
