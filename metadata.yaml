@@ -1,6 +1,8 @@
 homepage: https://www.alphalyr.com
 documentation: https://faq.alphalyr.com/knowledge/marketing-studio
 versions:
+  - sha: 1c6d9d7594f04bdb119252893f702ba8e0ebdf36
+    changeNotes: Remove last byte of ip address
   - sha: 84aedfd81ce81c7c565a3a822b0347303515915b
     changeNotes: Fix purchase value
   - sha: 8396ee0f2eff43e92f678e2077a20df2589ee4e4
