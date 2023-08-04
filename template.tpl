@@ -146,9 +146,14 @@ function serverToServerCall(url, onSuccess, onFailure) {
   }, requestHeaders, '');
 }
 
-const parseDiscount = (items) => {
+const parseDiscount = (d) => {
   let totalDiscount = 0;
-  items.forEach(item => {
+
+  if (typeof(d.discount) != 'undefined') {
+    return d.discount;
+  }
+
+  d.items.forEach(item => {
     if (item.hasOwnProperty('discount'))
       totalDiscount += item.discount;
   });
@@ -190,7 +195,7 @@ function getData(key) {
   }
   
   if (key == 'confirmationDiscountAmount' && typeof(d.items) != 'undefined') {
-    return parseDiscount(d.items);
+    return parseDiscount(d);
   }
   
   if (key == 'productTable' && typeof(d.items) != 'undefined') {
