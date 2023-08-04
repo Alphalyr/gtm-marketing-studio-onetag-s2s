@@ -1,12 +1,4 @@
-﻿___TERMS_OF_SERVICE___
-
-By creating or modifying this file you agree to Google Tag Manager's Community
-Template Gallery Developer Terms of Service available at
-https://developers.google.com/tag-manager/gallery-tos (or such other URL as
-Google may provide), as modified from time to time.
-
-
-___INFO___
+﻿___INFO___
 
 {
   "type": "TAG",
@@ -235,8 +227,15 @@ let bytes = ipOverride.split('.');
 bytes[3] = '0';
 ipOverride = bytes.join('.');
 
+let referrerUrl = getData('page_referrer');
+let referrer = '';
+if (referrerUrl) {
+    referrerUrl = parseUrl(referrerUrl);
+    referrer = referrerUrl.origin;
+}
+
 genericConstructor += '&uuid=' + encodeUriComponent(sha256Sync(getData('client_id')));
-genericConstructor += '&referrer=' + encodeUriComponent(getData('page_referrer'));
+genericConstructor += '&referrer=' + encodeUriComponent(referrer);
 genericConstructor += '&ip_address=' + ipOverride;
 genericConstructor += '&user_agent=' + encodeUriComponent(getData('user_agent'));
 genericConstructor += '&deviceType=' + deviceType;
