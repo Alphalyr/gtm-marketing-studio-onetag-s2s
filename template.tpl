@@ -254,7 +254,7 @@ const parsedUrl = parseUrl(pageLocation);
 const params = {};
 if (parsedUrl && parsedUrl.searchParams) {
   for (let param in parsedUrl.searchParams) {
-    genericConstructor += '&' + param + '=' + encodeUriComponent(parsedUrl.searchParams[param]);
+    genericConstructor += '&' + param + '=' + encodeUriComponent(parsedUrl.searchParams[param].split(',')[0]);
   }
   genericConstructor += '&path=' + parsedUrl.pathname;
 }
