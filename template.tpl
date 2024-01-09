@@ -1,4 +1,12 @@
-﻿___INFO___
+﻿___TERMS_OF_SERVICE___
+
+By creating or modifying this file you agree to Google Tag Manager's Community
+Template Gallery Developer Terms of Service available at
+https://developers.google.com/tag-manager/gallery-tos (or such other URL as
+Google may provide), as modified from time to time.
+
+
+___INFO___
 
 {
   "type": "TAG",
@@ -126,6 +134,7 @@ const getAllEventData = require('getAllEventData');
 const parseUrl = require('parseUrl');
 const sha256Sync = require('sha256Sync');
 const getTimestamp = require('getTimestamp');
+const Math = require('Math');
 
 const onSuccess = () => {
   data.gtmOnSuccess();
@@ -258,7 +267,7 @@ genericConstructor += '&user_agent=' + encodeUriComponent(getData('user_agent'))
 genericConstructor += '&deviceType=' + deviceType;
 
 if (getData('isSPA')) {
-  gaSessionDuration = getTimestamp() - gaSessionId;
+  gaSessionDuration = Math.floor((getTimestamp() - (gaSessionId * 1000)) / 1000);
   genericConstructor += '&gaSessionId=' + gaSessionId;
   genericConstructor += '&gaSessionDuration=' + gaSessionDuration;
 }
