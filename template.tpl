@@ -77,6 +77,12 @@ ___TEMPLATE_PARAMETERS___
         "checkboxText": "Is SPA",
         "simpleValueType": true,
         "help": "Whether your website is a Single Page App."
+      },
+      {
+        "type": "CHECKBOX",
+        "name": "useHexSHA1",
+        "checkboxText": "Use Hex format for UUID",
+        "simpleValueType": true
       }
     ]
   },
@@ -241,7 +247,11 @@ if (referrerUrl) {
     referrer = referrerUrl.origin;
 }
 
-genericConstructor += '&uuid=' + sha256Sync(getData('client_id'), {outputEncoding: 'hex'});
+if (getData('useHexSHA1')) {
+  genericConstructor += '&uuid=' + sha256Sync(getData('client_id'), {outputEncoding: 'hex'});
+} else {
+  genericConstructor += '&uuid=' + sha256Sync(getData('client_id'));
+}
 genericConstructor += '&referrer=' + encodeUriComponent(referrer);
 genericConstructor += '&ip_address=' + ipOverride;
 genericConstructor += '&user_agent=' + encodeUriComponent(getData('user_agent'));
