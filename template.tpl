@@ -241,7 +241,7 @@ if (referrerUrl) {
     referrer = referrerUrl.origin;
 }
 
-genericConstructor += '&uuid=' + encodeUriComponent(sha256Sync(getData('client_id')));
+genericConstructor += '&uuid=' + sha256Sync(getData('client_id'), {outputEncoding: 'hex'});
 genericConstructor += '&referrer=' + encodeUriComponent(referrer);
 genericConstructor += '&ip_address=' + ipOverride;
 genericConstructor += '&user_agent=' + encodeUriComponent(getData('user_agent'));
