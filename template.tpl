@@ -119,6 +119,7 @@ const sendHttpRequest = require('sendHttpRequest');
 const getAllEventData = require('getAllEventData');
 const parseUrl = require('parseUrl');
 const sha256Sync = require('sha256Sync');
+const getTimestamp = require('getTimestamp');
 
 const onSuccess = () => {
   data.gtmOnSuccess();
@@ -226,6 +227,7 @@ let aid = getData('customerId') || '';
 let cid = getData('userEmail') || '';
 let customData = getData('customData') || '';
 let gaSessionId = getData('ga_session_id') || '';
+let gaSessionDuration = 0;
 let genericConstructor = '?page=' + page + '&aid=' + aid + '&cid=' + cid;
 let ipOverride = getData('ip_override');
 let bytes = ipOverride.split('.');
@@ -246,7 +248,9 @@ genericConstructor += '&user_agent=' + encodeUriComponent(getData('user_agent'))
 genericConstructor += '&deviceType=' + deviceType;
 
 if (getData('isSPA')) {
+  gaSessionDuration = getTimestamp() - gaSessionId;
   genericConstructor += '&gaSessionId=' + gaSessionId;
+  genericConstructor += '&gaSessionDuration=' + gaSessionDuration;
 }
 
 let pageLocation = getData('page_location') || '';
