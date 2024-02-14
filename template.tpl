@@ -222,8 +222,7 @@ if (getData('event_name') == 'purchase') {
 let pathConstructor = track;
 
 // -------- GENERIC DATA --------
-let allData = getAllEventData();
-let deviceType = allData.client_hints && allData.client_hits.mobile ? 'm' : 'd';
+let deviceType = (data.client_hints && data.client_hits.mobile) ? 'm' : 'd';
 let page = pageMap[getData('event_name')] || 'home';
 let aid = getData('customerId') || '';
 let cid = getData('userEmail') || '';
