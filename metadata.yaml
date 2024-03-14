@@ -1,6 +1,8 @@
 homepage: https://www.alphalyr.com
 documentation: https://faq.alphalyr.com/knowledge/marketing-studio
 versions:
+  - sha: 35ebacff0e16d73560aaf50148274c37b301f930
+    changeNotes: Add segment field
   - sha: 579e07b37e08e27f3c103e7171d67209a15fffcb
     changeNotes: Fix device type detection
   - sha: 1e342a39f4294593730263f4962773ce797de7eb
