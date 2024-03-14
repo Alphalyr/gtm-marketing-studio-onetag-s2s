@@ -77,6 +77,13 @@ ___TEMPLATE_PARAMETERS___
         "checkboxText": "Is SPA",
         "simpleValueType": true,
         "help": "Whether your website is a Single Page App."
+      },
+      {
+        "type": "TEXT",
+        "name": "segment",
+        "displayName": "Segment",
+        "simpleValueType": true,
+        "help": "Segment correspondant au client."
       }
     ]
   },
@@ -306,8 +313,9 @@ let shippingPrice = getData('shipping') || '';
 let clientType = getData('confirmationCustomerType') || '';
 let discountCode = getData('coupon') || '';
 let discountAmount = getData('confirmationDiscountAmount') || '';
+let segment = getData('segment') || '';
 
-let transactionPageConstructor = '&products=' + products + '&totalPrice=' + transactionTotalPrice + '&totalPriceWithTax=' + totalPriceWithTax + '&shippingPrice=' + shippingPrice + '&reference=' + referenceTransaction + '&new=' + clientType + '&currency=' + currency + '&discountCode=' + discountCode + '&discountAmount=' + discountAmount + '&customData=' + customData;
+let transactionPageConstructor = '&products=' + products + '&totalPrice=' + transactionTotalPrice + '&totalPriceWithTax=' + totalPriceWithTax + '&shippingPrice=' + shippingPrice + '&reference=' + referenceTransaction + '&new=' + clientType + '&currency=' + currency + '&discountCode=' + discountCode + '&discountAmount=' + discountAmount + '&segments=' + segment + '&customData=' + customData;
 
 
 // -------- GDPR Consent Constructor DATA --------
