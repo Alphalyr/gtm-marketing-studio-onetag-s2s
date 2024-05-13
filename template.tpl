@@ -121,6 +121,7 @@ ___TEMPLATE_PARAMETERS___
 
 ___SANDBOXED_JS_FOR_SERVER___
 
+const JSON = require('JSON');
 const encodeUriComponent = require('encodeUriComponent');
 const sendHttpRequest = require('sendHttpRequest');
 const getAllEventData = require('getAllEventData');
@@ -128,6 +129,12 @@ const parseUrl = require('parseUrl');
 const sha256Sync = require('sha256Sync');
 const getTimestamp = require('getTimestamp');
 const Math = require('Math');
+const getContainerVersion = require('getContainerVersion');
+const logToConsole = require('logToConsole');
+
+const containerVersion = getContainerVersion();
+const isDebug = containerVersion.debugMode;
+const isLoggingEnabled = determinateIsLoggingEnabled();
 
 const onSuccess = () => {
   data.gtmOnSuccess();
@@ -144,6 +151,18 @@ const pageMap = {
   purchase: 'purchase',
 };
 
+function determinateIsLoggingEnabled() {
+    if (!data.logType) {
+        return isDebug;
+    }
+
+    if (data.logType === 'debug') {
+        return isDebug;
+    }
+
+    return data.logType === 'always';
+}
+
 function serverToServerCall(url, onSuccess, onFailure) {
   const requestHeaders = { method: 'GET' };
   sendHttpRequest(url, (statusCode, headers, body) => {
@@ -151,6 +170,12 @@ function serverToServerCall(url, onSuccess, onFailure) {
       onSuccess();
     } else {
       onFailure();
+      if (isLoggingEnabled) {
+        let dataToLog = {};
+        dataToLog.statusCode = statusCode;
+        dataToLog.url = url;
+        logToConsole(JSON.stringify(dataToLog));
+      }
     }
   }, requestHeaders, '');
 }
@@ -414,6 +439,34 @@ ___SERVER_PERMISSIONS___
     },
     "clientAnnotations": {
       "isEditedByUser": true
+    },
+    "isRequired": true
+  },
+  {
+    "instance": {
+      "key": {
+        "publicId": "logging",
+        "versionId": "1"
+      },
+      "param": [
+        {
+          "key": "environments",
+          "value": {
+            "type": 1,
+            "string": "debug"
+          }
+        }
+      ]
+    },
+    "isRequired": true
+  },
+  {
+    "instance": {
+      "key": {
+        "publicId": "read_container_data",
+        "versionId": "1"
+      },
+      "param": []
     },
     "isRequired": true
   }
