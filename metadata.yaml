@@ -1,6 +1,8 @@
 homepage: https://www.alphalyr.com
 documentation: https://faq.alphalyr.com/knowledge/marketing-studio
 versions:
+  - sha: 3bdb95642620bf7c22b5f3c2364906aeb04056ad
+    changeNotes: Add logging features
   - sha: 35ebacff0e16d73560aaf50148274c37b301f930
     changeNotes: Add segment field
   - sha: 579e07b37e08e27f3c103e7171d67209a15fffcb
