@@ -1,6 +1,8 @@
 homepage: https://www.alphalyr.com
 documentation: https://faq.alphalyr.com/knowledge/marketing-studio
 versions:
+  - sha: 2c3dfacaed5ff70d7e58fdb4dbafa15d9864e9f7
+    changeNotes: Update server URL
   - sha: 3bdb95642620bf7c22b5f3c2364906aeb04056ad
     changeNotes: Add logging features
   - sha: 35ebacff0e16d73560aaf50148274c37b301f930
