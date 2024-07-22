@@ -241,7 +241,7 @@ function getData(key) {
 
 
 const TEMPLATE_VERSION = '1.0.1';
-const MARKETINGSTUDIO_LIBRARY_URL = 'https://tck.elitrack.com/';
+const MARKETINGSTUDIO_LIBRARY_URL = 'https://tck.alphalyr.com/';
 
 let finalConstructor = '';
 
@@ -430,7 +430,7 @@ ___SERVER_PERMISSIONS___
             "listItem": [
               {
                 "type": 1,
-                "string": "https://tck.elitrack.com/*"
+                "string": "https://tck.alphalyr.com/*"
               }
             ]
           }
