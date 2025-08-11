@@ -131,6 +131,7 @@ const getTimestamp = require('getTimestamp');
 const Math = require('Math');
 const getContainerVersion = require('getContainerVersion');
 const logToConsole = require('logToConsole');
+const getType = require('getType');
 
 const containerVersion = getContainerVersion();
 const isDebug = containerVersion.debugMode;
@@ -294,7 +295,11 @@ const parsedUrl = parseUrl(pageLocation);
 const params = {};
 if (parsedUrl && parsedUrl.searchParams) {
   for (let param in parsedUrl.searchParams) {
-    genericConstructor += '&' + param + '=' + encodeUriComponent(parsedUrl.searchParams[param].split(',')[0]);
+    let utmParamValue = parsedUrl.searchParams[param];
+    if (getType(utmParamValue) == "array") {
+        utmParamValue = utmParamValue[0];
+    }
+    genericConstructor += '&' + param + '=' + encodeUriComponent(utmParamValue.split(',')[0]);
   }
   genericConstructor += '&path=' + parsedUrl.pathname;
 }
@@ -457,6 +462,9 @@ ___SERVER_PERMISSIONS___
           }
         }
       ]
+    },
+    "clientAnnotations": {
+      "isEditedByUser": true
     },
     "isRequired": true
   },
