@@ -284,9 +284,10 @@ genericConstructor += '&ip_address=' + ipOverride;
 genericConstructor += '&user_agent=' + encodeUriComponent(getData('user_agent'));
 genericConstructor += '&deviceType=' + deviceType;
 
+genericConstructor += '&gaSessionId=' + gaSessionId;
+
 if (getData('isSPA')) {
   gaSessionDuration = Math.floor((getTimestamp() - (gaSessionId * 1000)) / 1000);
-  genericConstructor += '&gaSessionId=' + gaSessionId;
   genericConstructor += '&gaSessionDuration=' + gaSessionDuration;
 }
 
