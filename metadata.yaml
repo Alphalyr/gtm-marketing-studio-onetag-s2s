@@ -1,6 +1,8 @@
 homepage: https://www.alphalyr.com
 documentation: https://faq.alphalyr.com/knowledge/marketing-studio
 versions:
+  - sha: fca7d23853ddbf521025516d851f42f0c923bb07
+    changeNotes: Always send gaSessionId regardless of the Is SPA setting
   - sha: 36e1931f48ff4d72ac5a6dd4309b8ffb6491de95
     changeNotes: discards duplicate URL parameters
   - sha: 2c3dfacaed5ff70d7e58fdb4dbafa15d9864e9f7
